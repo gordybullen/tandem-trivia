@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import questions from "../Apprentice_TandemFor400_Data.json";
+import questions from "../util/triviaService";
 import "../styles/TriviaQuestion.css";
 
-function TriviaQuestion() {
-  const [questionIdx, setQuestionIdx] = useState(0);
+const TriviaQuestion = ({ questionObj, submitSelected }) => {
   const [selected, setSelected] = useState("");
-  const question = questions[questionIdx];
-  const options = question.incorrect.concat(question.correct);
+  const options = questionObj.incorrect.concat(questionObj.correct);
 
   const handleSelect = (e) => {
     const option = e.target.innerText;
@@ -19,13 +17,13 @@ function TriviaQuestion() {
   };
 
   const handleSubmit = () => {
-    setQuestionIdx(questionIdx + 1);
-  };
+    submitSelected(selected, questionObj.correct)
+  }
 
   return (
-    <div className="question-container">
-      <h2 className="question-title">{question.question}</h2>
-      <div className="options-container">
+    <div className="questionContainer">
+      <h2 className="title">{questionObj.question}</h2>
+      <div className="optionsContainer">
         {options.map((option, idx) => {
           return (
             <div
@@ -41,6 +39,6 @@ function TriviaQuestion() {
       <button onClick={handleSubmit}>Submit answer</button>
     </div>
   );
-}
+};
 
 export default TriviaQuestion;
