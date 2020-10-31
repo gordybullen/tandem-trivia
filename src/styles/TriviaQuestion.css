@@ -1,0 +1,7 @@
+.option {
+  border: 1px solid black;
+  cursor: pointer;
+}
+.selected {
+  border: 1px solid yellow;
+}
