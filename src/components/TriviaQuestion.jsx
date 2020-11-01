@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import questions from "../util/triviaService";
 import "../styles/TriviaQuestion.css";
 
 const TriviaQuestion = ({ questionObj, submitSelected }) => {
   const [selected, setSelected] = useState("");
   const options = questionObj.incorrect.concat(questionObj.correct);
+  // if no option is selected, disable the answer submit button
+  const submitDisabled = Boolean(!selected);
 
   const handleSelect = (e) => {
     const option = e.target.innerText;
@@ -17,9 +18,9 @@ const TriviaQuestion = ({ questionObj, submitSelected }) => {
   };
 
   const handleSubmit = () => {
-    submitSelected(selected, questionObj.correct)
-  }
-
+    submitSelected(selected);
+  };
+console.log(submitDisabled)
   return (
     <div className="questionContainer">
       <h2 className="title">{questionObj.question}</h2>
@@ -36,7 +37,9 @@ const TriviaQuestion = ({ questionObj, submitSelected }) => {
           );
         })}
       </div>
-      <button onClick={handleSubmit}>Submit answer</button>
+      <button onClick={handleSubmit} disabled={submitDisabled}>
+        Submit answer
+      </button>
     </div>
   );
 };

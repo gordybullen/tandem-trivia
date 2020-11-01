@@ -19,10 +19,10 @@ const TandemTrivia = () => {
   };
 
   const getQuestions = () => {
-    triviaService().then((questions) => setQuestions(questions));
+    triviaService().then((questionSet) => setQuestions(questionSet));
   };
 
-  useEffect(getQuestions, [triviaService]);
+  useEffect(getQuestions, [setQuestions]);
 
   const menu = () => {
     return (
@@ -45,6 +45,7 @@ const TandemTrivia = () => {
           submitSelected={(answer) => checkAnswer(answer, questionObj.correct)}
         />
       ) : (
+        // once all questions have been responded to, display the score
         <div>{score}</div>
       )}
     </div>
