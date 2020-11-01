@@ -1,6 +1,6 @@
 import React from "react";
 
-const AnswerReveal = ({ selected, correct, handleNext }) => {
+const AnswerReveal = ({ selected, correct, responses, handleNext }) => {
   return (
     <>
       <div>Correct answer: {correct}</div>
@@ -8,7 +8,9 @@ const AnswerReveal = ({ selected, correct, handleNext }) => {
       <div>
         {selected === correct ? "Great job!!!" : "You'll get it next time!"}
       </div>
-      <button onClick={handleNext}>Next question!</button>
+      <button onClick={handleNext}>
+        {responses < 9 ? "Next question!" : "Final score"}
+      </button>
     </>
   );
 };

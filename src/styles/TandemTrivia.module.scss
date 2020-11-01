@@ -16,11 +16,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 100%;
   overflow: scroll;
 }
 .title {
+  text-align: center;
   color: #717244;
   margin: 0;
   position: relative;

@@ -9,6 +9,7 @@ const TriviaQuestion = ({
   questionObj: { question, incorrect, correct },
   submitSelected,
   submitResponse,
+  responses
 }) => {
   const [selected, setSelected] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -37,7 +38,7 @@ const TriviaQuestion = ({
 
   const handleSubmit = () => {
     setSubmitted(true);
-    submitSelected(selected);
+    submitSelected(selected, time);
   };
 
   const handleNext = () => {
@@ -97,6 +98,7 @@ const TriviaQuestion = ({
         <AnswerReveal
           selected={selected}
           correct={correct}
+          responses={responses}
           handleNext={handleNext}
         />
       )}

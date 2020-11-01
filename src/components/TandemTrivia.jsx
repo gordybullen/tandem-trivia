@@ -7,14 +7,19 @@ const TandemTrivia = () => {
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState(0);
   const [score, setScore] = useState(0);
+  const [multiplier, setMultiplier] = useState(1);
   const [start, setStart] = useState(false);
 
   // responses is also the index of the next question to be answered */
   const questionObj = questions[responses];
 
-  const checkAnswer = (answer, correctAnswer) => {
+  const checkAnswer = (answer, correctAnswer, timeRemaining) => {
     if (answer === correctAnswer) {
-      setScore(score + 1);
+      setMultiplier(multiplier + 0.5);
+      const points = 100 - (10 - timeRemaining) * 5;
+      setScore(score + points * multiplier);
+    } else {
+      setMultiplier(1);
     }
   };
 
@@ -63,26 +68,24 @@ const TandemTrivia = () => {
             <div>
               Round: {responses + 1}/{questions.length}
             </div>
-            <div>
-              Score: {score}
-            </div>
+            <div>Score: {score}</div>
+            <div>Multiplier: {multiplier}</div>
           </div>
           <TriviaQuestion
             questionObj={questionObj}
-            submitSelected={(answer) =>
-              checkAnswer(answer, questionObj.correct)
+            submitSelected={(answer, timeRemaining) =>
+              checkAnswer(answer, questionObj.correct, timeRemaining)
             }
             submitResponse={() =>
               setResponses(responses < 10 ? responses + 1 : 10)
             }
+            responses={responses}
           />
         </>
       ) : (
         // once all questions have been responded to, display the score
         <>
-          <div>
-            You scored: {score}/{questions.length}
-          </div>
+          <div>Final score: {score}</div>
           <button onClick={restartGame}>Try again?</button>
         </>
       )}
