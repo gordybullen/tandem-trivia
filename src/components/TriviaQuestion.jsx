@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "../styles/TriviaQuestion.css";
+import styles from "../styles/TriviaQuestion.module.scss";
 import shuffleArray from "../util/shuffleArray";
 
 const TriviaQuestion = ({
   questionObj: { question, incorrect, correct },
   submitSelected,
+  submitResponse,
 }) => {
   const [selected, setSelected] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -30,20 +31,29 @@ const TriviaQuestion = ({
   };
 
   const handleSubmit = () => {
+    setSubmitted(true);
+    submitSelected(selected);
+  };
+
+  const handleNext = () => {
     setSelected("");
     setSubmitted(false);
-    submitSelected(selected);
+    submitResponse();
   };
 
   const optionSelect = () => {
     return (
       <>
-        <h2 className="title">{question}</h2>
-        <div className="optionsContainer">
+        <h2 className={styles.title}>{question}</h2>
+        <div className={styles.optionsContainer}>
           {options.map((option, idx) => {
             return (
               <div
-                className={option === selected ? "option selected" : "option"}
+                className={
+                  option === selected
+                    ? `${styles.option} ${styles.selected}`
+                    : styles.option
+                }
                 key={`option-${idx}`}
                 onClick={handleSelect}
               >
@@ -52,7 +62,7 @@ const TriviaQuestion = ({
             );
           })}
         </div>
-        <button onClick={() => setSubmitted(true)} disabled={submitDisabled}>
+        <button onClick={handleSubmit} disabled={submitDisabled}>
           Submit answer
         </button>
       </>
@@ -67,13 +77,13 @@ const TriviaQuestion = ({
         <div>
           {selected === correct ? "Great job!!!" : "You'll get it next time!"}
         </div>
-        <button onClick={handleSubmit}>Next question!</button>
+        <button onClick={handleNext}>Next question!</button>
       </>
     );
   };
 
   return (
-    <div className="questionContainer">
+    <div className={styles.questionContainer}>
       {/* if no answer has been submitted, show options to select, else show answer */}
       {!submitted ? optionSelect() : answerReveal()}
     </div>
