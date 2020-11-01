@@ -1,13 +1,43 @@
 .container {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  width: 75%;
+  height: 75%;
+  background-color: rgb(255, 244, 230);
+  border-radius: 10px;
+  -webkit-box-shadow: 13px 13px 29px 3px rgb(28, 35, 52);
+  -moz-box-shadow: 13px 13px 29px 3px rgb(28, 35, 52);
+  box-shadow: 13px 13px 29px 3px rgb(28, 35, 52);
+  padding: 20px;
+}
+.menuContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow: scroll;
 }
 .title {
-  background-color: orange;
+  color: #717244;
+  margin: 0;
+  position: relative;
+}
+.instructions {
+  margin-top: 40px;
+  text-align: center;
+  width: 65%;
+  font-family: Apercu-light, sans-serif;
+}
+.underline {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 12px;
+  left: 20px;
+  right: 20px;
+  bottom: -14px;
+  background: #8b134d;
 }

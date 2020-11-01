@@ -1,17 +1,56 @@
+html {
+  height: 100%;
+  width: 100%;
+}
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Apercu-Mono, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to right, #8b134d 0%, #b19cd9 100%);
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 button {
+  height: 60px;
+  min-height: 60px;
+  min-width: 185px;
+  background: linear-gradient(to right, #0a2c49 50%, #001229 50%);
+  background-position: right bottom;
+  background-size: 200% 100%;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: Apercu-Mono, monospace;
+  color: white;
+  border: none;
   cursor: pointer;
+  text-decoration: none;
+  /* overflow: hidden; */
+  transition: all 0.25s ease-in-out;
+}
+
+button:hover {
+  background-position: left bottom;
 }

@@ -13,6 +13,7 @@ const TriviaQuestion = ({
   const [selected, setSelected] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [options, setOptions] = useState([]);
+  const [time, setTime] = useState(10);
 
   // combine the array of incorrect answers and the correct answer to get all
   // the options and then shuffle after initial render so correct answer isn't
@@ -42,12 +43,26 @@ const TriviaQuestion = ({
   const handleNext = () => {
     setSelected("");
     setSubmitted(false);
+    setTime(10);
     submitResponse();
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime((prevTime) => prevTime - 1);
+    }, 1000);
+
+    if (time <= 0) {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [time]);
+
   const optionSelect = () => {
     return (
-      <>
+      <div className={styles.optionSelectContainer}>
+        <div className={styles.timeRemaining}>Timer: {time}</div>
         <h2 className={styles.title}>{question}</h2>
         <div className={styles.optionsContainer}>
           {options.map((option, idx) => {
@@ -69,14 +84,14 @@ const TriviaQuestion = ({
         <button onClick={handleSubmit} disabled={submitDisabled}>
           Submit answer
         </button>
-      </>
+      </div>
     );
   };
 
   return (
     <div className={styles.questionContainer}>
       {/* if no answer has been submitted, show options to select, else reveal answer */}
-      {!submitted ? (
+      {!submitted && time ? (
         optionSelect()
       ) : (
         <AnswerReveal

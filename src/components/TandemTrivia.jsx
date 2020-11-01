@@ -33,22 +33,39 @@ const TandemTrivia = () => {
 
   const menu = () => {
     return (
-      <>
-        <h1 className={styles.title}>Welcome to Tandem Trivia!!!</h1>
+      <div className={styles.menuContainer}>
+        <h1 className={styles.title}>
+          Welcome to Tandem Trivia!
+          <div className={styles.underline}></div>
+        </h1>
+        <p className={styles.instructions}>
+          Test your trivia knowledge by answering 10 questions chosen at random
+          from the question bank. <br></br>
+          <br></br> Questions will be displayed one at a time. Each question has
+          several options to choose from, but only one is correct! <br></br>
+          <br></br> Click "Start" to begin. Then, select your best guess and
+          click "Submit answer" to see if you got it right.
+        </p>
         <button onClick={() => setStart(true)}>Start</button>
-      </>
+      </div>
     );
   };
 
   return (
     <div className={styles.container}>
+      {/* <div className={styles.gameContainer}> */}
       {/* if start is false, show the menu, otherwise start the trivia */}
       {!start ? (
         menu()
       ) : responses < 10 ? (
         <>
-          <div className={styles.currentScore}>
-            Current score: {score}/{questions.length}
+          <div className={styles.stats}>
+            <div>
+              Round: {responses + 1}/{questions.length}
+            </div>
+            <div>
+              Score: {score}
+            </div>
           </div>
           <TriviaQuestion
             questionObj={questionObj}
@@ -69,6 +86,7 @@ const TandemTrivia = () => {
           <button onClick={restartGame}>Try again?</button>
         </>
       )}
+      {/* </div> */}
     </div>
   );
 };
