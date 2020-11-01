@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import styles from "../styles/TriviaQuestion.module.scss";
+import AnswerReveal from "./AnswerReveal";
 import shuffleArray from "../util/shuffleArray";
+
+// styles
+import styles from "../styles/TriviaQuestion.module.scss";
 
 const TriviaQuestion = ({
   questionObj: { question, incorrect, correct },
@@ -12,7 +15,8 @@ const TriviaQuestion = ({
   const [options, setOptions] = useState([]);
 
   // combine the array of incorrect answers and the correct answer to get all
-  // the options and then shuffle after initial render so correct answer isn't always last
+  // the options and then shuffle after initial render so correct answer isn't
+  // always last option
   useEffect(() => {
     setOptions(shuffleArray(incorrect.concat(correct)));
   }, [incorrect, correct, setOptions]);
@@ -69,23 +73,18 @@ const TriviaQuestion = ({
     );
   };
 
-  const answerReveal = () => {
-    return (
-      <>
-        <div>Correct answer: {correct}</div>
-        <div>Your answer: {selected}</div>
-        <div>
-          {selected === correct ? "Great job!!!" : "You'll get it next time!"}
-        </div>
-        <button onClick={handleNext}>Next question!</button>
-      </>
-    );
-  };
-
   return (
     <div className={styles.questionContainer}>
-      {/* if no answer has been submitted, show options to select, else show answer */}
-      {!submitted ? optionSelect() : answerReveal()}
+      {/* if no answer has been submitted, show options to select, else reveal answer */}
+      {!submitted ? (
+        optionSelect()
+      ) : (
+        <AnswerReveal
+          selected={selected}
+          correct={correct}
+          handleNext={handleNext}
+        />
+      )}
     </div>
   );
 };

@@ -9,6 +9,7 @@ const TandemTrivia = () => {
   const [score, setScore] = useState(0);
   const [start, setStart] = useState(false);
 
+  // responses is also the index of the next question to be answered */
   const questionObj = questions[responses];
 
   const checkAnswer = (answer, correctAnswer) => {
@@ -49,7 +50,6 @@ const TandemTrivia = () => {
           <div className={styles.currentScore}>
             Current score: {score}/{questions.length}
           </div>
-          {/* responses is also the index of the next question to be answered */}
           <TriviaQuestion
             questionObj={questionObj}
             submitSelected={(answer) =>
