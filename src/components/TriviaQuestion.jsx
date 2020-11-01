@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/TriviaQuestion.css";
+import shuffleArray from "../util/shuffleArray";
 
 const TriviaQuestion = ({
   questionObj: { question, incorrect, correct },
@@ -7,10 +8,13 @@ const TriviaQuestion = ({
 }) => {
   const [selected, setSelected] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [options, setOptions] = useState([]);
 
   // combine the array of incorrect answers and the correct answer to get all
-  // the options
-  const options = incorrect.concat(correct);
+  // the options and then shuffle after initial render so correct answer isn't always last
+  useEffect(() => {
+    setOptions(shuffleArray(incorrect.concat(correct)));
+  }, [incorrect, correct, setOptions]);
 
   // if no option is selected, disable the answer submit button using a boolean
   const submitDisabled = Boolean(!selected);
@@ -70,6 +74,7 @@ const TriviaQuestion = ({
 
   return (
     <div className="questionContainer">
+      {/* if no answer has been submitted, show options to select, else show answer */}
       {!submitted ? optionSelect() : answerReveal()}
     </div>
   );

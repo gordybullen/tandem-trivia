@@ -8,6 +8,7 @@ const TandemTrivia = () => {
   const [responses, setResponses] = useState(0);
   const [score, setScore] = useState(0);
   const [start, setStart] = useState(false);
+
   const questionObj = questions[responses];
 
   const checkAnswer = (answer, correctAnswer) => {
@@ -16,6 +17,13 @@ const TandemTrivia = () => {
     }
 
     setResponses(responses < 10 ? responses + 1 : 10);
+  };
+
+  const restartGame = () => {
+    setResponses(0);
+    setScore(0);
+    setStart(false);
+    getQuestions();
   };
 
   const getQuestions = () => {
@@ -46,7 +54,12 @@ const TandemTrivia = () => {
         />
       ) : (
         // once all questions have been responded to, display the score
-        <div>{score}</div>
+        <>
+          <div>
+            You scored: {score}/{questions.length}
+          </div>
+          <button onClick={restartGame}>Try again?</button>
+        </>
       )}
     </div>
   );
