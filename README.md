@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Tandem Trivia 
+### [Live Demo](https://gordybullen.github.io/tandem-trivia/)
+Tandem Trivia is a fun and simple trivia app that I built using React. I challenged myself to only use function components with Hooks for this app. I recently started learning Hooks and have been loving their simplicity and versatility. Check out Tandem Trivia [here](https://gordybullen.github.io/tandem-trivia/).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="" alt="tandem trivia" width="450"/>
 
-## Available Scripts
+## Instructions
+Tandem Trivia is hosted using GitHub Pages, which allows you to play the game in your browser without downloading the project files, just click on the link above. 
+If you would like to check out the code yourself and run the app locally, follow these steps:
+1. Download the repo and unzip it
+2. Open your terminal and cd into the project folder
+3. Run ```npm install``` to install the dependencies
+4. Run ```npm start``` to spin up the app and enjoy!
 
-In the project directory, you can run:
+## Technologies
+- React
+- React Hooks
+- Javascript (ES6)
 
-### `npm start`
+## Trivia Gameplay
+- Each round, 10 random trivia question will be pulled from the question bank provided for this code challenge, each with 3-4 potential answers to choose from
+- The player has 15 seconds to select their answer and submit it. Alternatively, the player may choose to to turn the timer off for a more leisurely experience.
+- Once an answer has been submitted, the correct answer will be revealed to the player so that they may check their answer against it
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img src="" alt="trivia gif" width="450"/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Scoring: 
+  - Running out of time and not submitting an answer will result in 0 points for that questions
+  - For answering correctly, scoring is based on the players' Multiplier and how quickly they answerd the question if the timer is on.
+  
+  ``` javascript
+  const checkAnswer = (answer, correctAnswer, timeRemaining) => {
+    if (answer === correctAnswer) {
+      setAnswered(answered + 1);
+      setMultiplier(multiplier + 1);
+      const points = 100 - (ANSWER_TIME - timeRemaining) * 5;
+      setScore(score + points * multiplier);
+    } else {
+      setMultiplier(1);
+    }
+  };
+```
 
-### `npm test`
+- A round of trivia is over when all 10 questions have been finished, whether by submitting an answer or time running out
+  - The players' final score and correct answer count will then be displayed with an option to play again with a new set of questions
+  
+<img src="" alt="trivia gif" width="450"/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Next Steps
+- [ ] Add unit tests to provide documentation for other developers and prevent future regressions
+- [ ] Optimize the UI experience for web and mobile with media queries and CSS
+- [ ] Add music and sound effects
+- [ ] Add functionality for the user to set the timer for questions
