@@ -5,7 +5,7 @@ Tandem Trivia is a fun and simple trivia app that I built using React. I challen
 <img src="https://soundup-seeds.s3-us-west-1.amazonaws.com/tandem_trivia_menu.png" width=450 />
 
 ## Instructions
-Tandem Trivia is hosted using GitHub Pages, which allows you to play the game in your browser without downloading the project files, just click on the link above. 
+Tandem Trivia is hosted using GitHub Pages, which allows you to play the game in your browser without downloading the project files. Just click on the link above to play. 
 If you would like to check out the code yourself and run the app locally, follow these steps:
 1. Ensure that you have Node.js and npm installed and updated. If you don't, click [here](https://www.npmjs.com/get-npm) for instructions.
 2. Download the repo and unzip it
