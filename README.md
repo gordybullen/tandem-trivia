@@ -30,7 +30,7 @@ If you would like to check out the code yourself and run the app locally, follow
 - Alternatively, the player may choose to to turn the timer off for a more leisurely experience. The useEffect hook checks if the timer should be set based on previous user input.
 
 ```javascript
-// is timerOn is true based on user input, start the timer
+// if timerOn is true based on user input, start the timer
 useEffect(() => {
   if (timerOn) {
     const interval = setInterval(() => {
