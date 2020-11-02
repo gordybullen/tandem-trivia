@@ -45,7 +45,7 @@ useEffect(() => {
 
 - Scoring: 
   - Running out of time and not submitting an answer will result in 0 points for that question.
-  - For answering correctly, scoring is based on the players' Multiplier and how quickly they answerd the question if the timer is on.
+  - For answering correctly, scoring is based on the player's Multiplier and how quickly they answerd the question, if the timer is on.
   
 ``` javascript
 const checkAnswer = (answer, correctAnswer, timeRemaining) => {
