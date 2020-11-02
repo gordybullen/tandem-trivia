@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import styles from "../styles/TandemTrivia.module.scss";
 import TriviaQuestion from "./TriviaQuestion";
 import triviaService from "../util/triviaService";
 
-const ANSWER_TIME = 15;
+// styles
+import styles from "../styles/TandemTrivia.module.scss";
+
+const ANSWER_TIME = 15; // change this const for more time on the timer
 
 const TandemTrivia = () => {
   const [questions, setQuestions] = useState([]);
@@ -24,7 +26,7 @@ const TandemTrivia = () => {
       const points = 100 - (ANSWER_TIME - timeRemaining) * 5;
       setScore(score + points * multiplier);
     } else {
-      setMultiplier(1);
+      setMultiplier(1); // reset Multiplier is answer was incorrect
     }
   };
 

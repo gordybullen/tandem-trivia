@@ -32,6 +32,7 @@ const TriviaQuestion = ({
   const handleSelect = (e) => {
     const option = e.target.innerText;
 
+    // ensure only one option can be selected at once
     if (option === selected) {
       setSelected("");
     } else {
@@ -51,6 +52,7 @@ const TriviaQuestion = ({
     submitResponse();
   };
 
+  // is timerOn is true based on user input, start the timer
   useEffect(() => {
     if (timerOn) {
       const interval = setInterval(() => {
