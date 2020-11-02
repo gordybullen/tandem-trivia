@@ -2,7 +2,7 @@
 ### [Live Demo](https://gordybullen.github.io/tandem-trivia/)
 Tandem Trivia is a fun and simple trivia app that I built using React. I challenged myself to only use function components with Hooks for this app. I recently started learning Hooks and have been loving their simplicity and versatility. Check out Tandem Trivia [here](https://gordybullen.github.io/tandem-trivia/).
 
-<img src="https://gordy-random.s3-us-west-1.amazonaws.com/tandem_trivia_menu.png" />
+<img src="https://soundup-seeds.s3-us-west-1.amazonaws.com/tandem_trivia_menu.png" />
 
 ## Instructions
 Tandem Trivia is hosted using GitHub Pages, which allows you to play the game in your browser without downloading the project files, just click on the link above. 
