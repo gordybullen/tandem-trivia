@@ -8,9 +8,9 @@ Tandem Trivia is a fun and simple trivia app that I built using React. I challen
 Tandem Trivia is hosted using GitHub Pages, which allows you to play the game in your browser without downloading the project files. Just click on the link above to play. 
 If you would like to check out the code yourself and run the app locally, follow these steps:
 1. Ensure that you have Node.js and npm installed and updated. If you don't, click [here](https://www.npmjs.com/get-npm) for instructions.
-2. Download the repo and unzip it
-3. Open your terminal and cd into the project folder
-4. Run ```npm install``` to install the dependencies
+2. Download the repo and unzip it.
+3. Open your terminal and cd into the project folder.
+4. Run ```npm install``` to install the dependencies.
 5. Run ```npm start``` to spin up the app and enjoy!
 
 ## Technologies
