@@ -34,7 +34,7 @@ code {
 button {
   height: 60px;
   min-height: 60px;
-  min-width: 185px;
+  min-width: 250px;
   background: linear-gradient(to right, #0a2c49 50%, #001229 50%);
   background-position: right bottom;
   background-size: 200% 100%;
@@ -48,7 +48,8 @@ button {
   cursor: pointer;
   text-decoration: none;
   /* overflow: hidden; */
-  transition: all 0.25s ease-in-out;
+  transition: all 0.35s ease-in-out;
+  outline: none;
 }
 
 button:hover {

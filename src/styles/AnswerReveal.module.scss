@@ -1,0 +1,14 @@
+.answerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  font-size: 36px;
+}
+.correct {
+  color: #717244;
+}
+.incorrect {
+  color: rgb(255, 105, 78)
+}

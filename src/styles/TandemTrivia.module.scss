@@ -42,3 +42,62 @@
   bottom: -14px;
   background: #8b134d;
 }
+.shortUnderline {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 6px;
+  left: 50px;
+  right: 50px;
+  bottom: -7px;
+  background: #8b134d;
+}
+.stats {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.statItem {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 400px;
+  position: relative;
+}
+.gameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+.finalScore,
+.answered,
+.thanks {
+  font-size: 36px;
+  color: #717244;
+}
+.timerOn {
+  background: none;
+  background-color: #717244 !important;
+}
+.timerOff {
+  background: none;
+  background-color: rgb(255, 105, 78) ;
+}
+.timerOn, .timerOff {
+  min-width: 0;
+  width: 100px;
+  min-height: 0;
+  height: 80px;
+  position: absolute;
+  right: 0;
+}
+.buttons {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

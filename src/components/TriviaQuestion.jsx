@@ -9,12 +9,14 @@ const TriviaQuestion = ({
   questionObj: { question, incorrect, correct },
   submitSelected,
   submitResponse,
-  responses
+  responses,
+  answerTime,
+  timerOn,
 }) => {
   const [selected, setSelected] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [options, setOptions] = useState([]);
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(answerTime);
 
   // combine the array of incorrect answers and the correct answer to get all
   // the options and then shuffle after initial render so correct answer isn't
@@ -44,26 +46,32 @@ const TriviaQuestion = ({
   const handleNext = () => {
     setSelected("");
     setSubmitted(false);
-    setTime(10);
+    setTime(answerTime);
     submitResponse();
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTime((prevTime) => prevTime - 1);
-    }, 1000);
+    if (timerOn) {
+      const interval = setInterval(() => {
+        setTime((prevTime) => prevTime - 1);
+      }, 1000);
 
-    if (time <= 0) {
-      clearInterval(interval);
+      if (time < 0) {
+        clearInterval(interval);
+      }
+
+      return () => clearInterval(interval);
     }
-
-    return () => clearInterval(interval);
-  }, [time]);
+  }, [time, timerOn]);
 
   const optionSelect = () => {
     return (
       <div className={styles.optionSelectContainer}>
-        <div className={styles.timeRemaining}>Timer: {time}</div>
+        {timerOn ? (
+          <div className={styles.timerContainer}>
+            <div className={styles.timeRemaining}>Timer: {time}</div>
+          </div>
+        ) : null}
         <h2 className={styles.title}>{question}</h2>
         <div className={styles.optionsContainer}>
           {options.map((option, idx) => {
@@ -92,13 +100,14 @@ const TriviaQuestion = ({
   return (
     <div className={styles.questionContainer}>
       {/* if no answer has been submitted, show options to select, else reveal answer */}
-      {!submitted && time ? (
+      {!submitted && time >= 0 ? (
         optionSelect()
       ) : (
         <AnswerReveal
           selected={selected}
           correct={correct}
           responses={responses}
+          timeRemaining={time}
           handleNext={handleNext}
         />
       )}
