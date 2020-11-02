@@ -19,7 +19,24 @@ If you would like to check out the code yourself and run the app locally, follow
 
 ## Trivia Gameplay
 - Each round, 10 random trivia question will be pulled from the question bank provided for this code challenge, each with 3-4 potential answers to choose from
-- The player has 15 seconds to select their answer and submit it. Alternatively, the player may choose to to turn the timer off for a more leisurely experience.
+- The player has 15 seconds to select their answer and submit it.
+``` javascript
+useEffect(() => {
+    if (timerOn) {
+      const interval = setInterval(() => {
+        setTime((prevTime) => prevTime - 1);
+      }, 1000);
+
+      if (time < 0) {
+        clearInterval(interval);
+      }
+
+      return () => clearInterval(interval);
+    }
+  }, [time, timerOn]);
+```
+
+- Alternatively, the player may choose to to turn the timer off for a more leisurely experience.
 - Once an answer has been submitted, the correct answer will be revealed to the player so that they may check their answer against it
 
 <img src="https://media.giphy.com/media/OewJCJDiXcVQ2ICKZR/giphy.gif" width="450"/>
@@ -29,20 +46,19 @@ If you would like to check out the code yourself and run the app locally, follow
   - For answering correctly, scoring is based on the players' Multiplier and how quickly they answerd the question if the timer is on.
   
   ``` javascript
-  const checkAnswer = (answer, correctAnswer, timeRemaining) => {
-    if (answer === correctAnswer) {
-      setAnswered(answered + 1);
-      setMultiplier(multiplier + 1);
-      const points = 100 - (ANSWER_TIME - timeRemaining) * 5;
-      setScore(score + points * multiplier);
-    } else {
-      setMultiplier(1);
-    }
-  };
-```
+ const checkAnswer = (answer, correctAnswer, timeRemaining) => {
+   if (answer === correctAnswer) {
+     setAnswered(answered + 1);
+     setMultiplier(multiplier + 1);
+     const points = 100 - (ANSWER_TIME - timeRemaining) * 5;
+     setScore(score + points * multiplier);
+   } else {
+     setMultiplier(1);
+   }
+ };
 
  - A round of trivia is over when all 10 questions have been finished, whether by submitting an answer or time running out
-  - The players' final score and correct answer count will then be displayed with an option to play again with a new set of questions
+  - The player's final score and correct answer count will then be displayed with an option to play again with a new set of questions
 
 ## Next Steps
 - [ ] Add unit tests to provide documentation for other developers and prevent future regressions
