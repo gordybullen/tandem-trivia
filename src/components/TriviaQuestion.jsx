@@ -64,7 +64,7 @@ const TriviaQuestion = ({
 
       return () => clearInterval(interval);
     }
-  }, [time, timerOn]);
+  }, [time, timerOn, clearInterval]);
 
   const optionSelect = () => {
     return (
