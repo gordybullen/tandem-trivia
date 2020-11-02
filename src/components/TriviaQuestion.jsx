@@ -52,7 +52,7 @@ const TriviaQuestion = ({
     submitResponse();
   };
 
-  // is timerOn is true based on user input, start the timer
+  // if timerOn is true based on user input, start the timer
   useEffect(() => {
     if (timerOn) {
       const interval = setInterval(() => {
