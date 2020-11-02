@@ -25,18 +25,19 @@ If you would like to check out the code yourself and run the app locally, follow
 
 ``` javascript
 useEffect(() => {
-    if (timerOn) {
-      const interval = setInterval(() => {
-        setTime((prevTime) => prevTime - 1);
-      }, 1000);
+  if (timerOn) {
+    const interval = setInterval(() => {
+      setTime((prevTime) => prevTime - 1);
+    }, 1000);
 
-      if (time < 0) {
-        clearInterval(interval);
-      }
-
-      return () => clearInterval(interval);
+    if (time < 0) {
+      setMultiplier(1);
+      clearInterval(interval);
     }
-  }, [time, timerOn]);
+
+    return () => clearInterval(interval);
+  }
+}, [time, timerOn, clearInterval]);
 ```
 
 - Once an answer has been submitted, the correct answer will be revealed to the player so that they may check their answer against it.
