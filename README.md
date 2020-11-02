@@ -21,7 +21,7 @@ If you would like to check out the code yourself and run the app locally, follow
 ## Trivia Gameplay
 - Each round, 10 random trivia question will be pulled from the question bank provided for this code challenge, each with 3-4 potential answers to choose from.
 - The player has 15 seconds to select their answer and submit it.
-- Alternatively, the player may choose to to turn the timer off for a more leisurely experience.
+- Alternatively, the player may choose to to turn the timer off for a more leisurely experience. The useEffect hook checks if the timer should be set based on previous user input.
 
 ``` javascript
 useEffect(() => {
@@ -50,14 +50,14 @@ useEffect(() => {
   
 ``` javascript
 const checkAnswer = (answer, correctAnswer, timeRemaining) => {
-    if (answer === correctAnswer) {
-      setAnswered(answered + 1);
-      setMultiplier(multiplier + 1);
-      const points = 100 - (ANSWER_TIME - timeRemaining) * 5;
-      setScore(score + points * multiplier);
-    } else {
-      setMultiplier(1);
-    }
+  if (answer === correctAnswer) {
+    setAnswered(answered + 1);
+    setMultiplier(multiplier + 1);
+    const points = 100 - (ANSWER_TIME - timeRemaining) * 5;
+    setScore(score + points * multiplier);
+  } else {
+    setMultiplier(1);
+  }
 };
 ```
 
