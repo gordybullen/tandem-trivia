@@ -12,6 +12,7 @@ const TriviaQuestion = ({
   responses,
   answerTime,
   timerOn,
+  setMultiplier,
 }) => {
   const [selected, setSelected] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -57,6 +58,7 @@ const TriviaQuestion = ({
       }, 1000);
 
       if (time < 0) {
+        setMultiplier(1);
         clearInterval(interval);
       }
 

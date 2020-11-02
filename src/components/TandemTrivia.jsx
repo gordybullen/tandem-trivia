@@ -108,6 +108,7 @@ const TandemTrivia = () => {
             responses={responses}
             answerTime={ANSWER_TIME}
             timerOn={timerOn}
+            setMultiplier={(num) => setMultiplier(num)}
           />
         </>
       ) : (
