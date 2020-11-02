@@ -85,7 +85,7 @@ const TandemTrivia = () => {
         <>
           <div className={styles.stats}>
             <div className={styles.statItem}>
-              Round: {responses + 1}/{questions.length}
+              Question: {responses + 1}/{questions.length}
               <div className={styles.shortUnderline}></div>
             </div>
             <div className={styles.statItem}>
