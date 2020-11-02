@@ -58,7 +58,7 @@ const TriviaQuestion = ({
       const interval = setInterval(() => {
         setTime((prevTime) => prevTime - 1);
       }, 1000);
-      
+
       // clear the interval once time is up or an answer is submitted
       if (time < 0) {
         setMultiplier(1);
@@ -104,7 +104,6 @@ const TriviaQuestion = ({
     );
   };
 
-  console.log(time)
   return (
     <div className={styles.questionContainer}>
       {/* if no answer has been submitted, show options to select, else reveal answer */}
