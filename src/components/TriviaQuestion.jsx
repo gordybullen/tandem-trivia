@@ -58,15 +58,17 @@ const TriviaQuestion = ({
       const interval = setInterval(() => {
         setTime((prevTime) => prevTime - 1);
       }, 1000);
-
+      
       if (time < 0) {
         setMultiplier(1);
+        clearInterval(interval);
+      } else if (submitted) {
         clearInterval(interval);
       }
 
       return () => clearInterval(interval);
     }
-  }, [time, timerOn, clearInterval]);
+  }, [setMultiplier, time, setTime, timerOn, submitted]);
 
   const optionSelect = () => {
     return (
@@ -101,6 +103,7 @@ const TriviaQuestion = ({
     );
   };
 
+  console.log(time)
   return (
     <div className={styles.questionContainer}>
       {/* if no answer has been submitted, show options to select, else reveal answer */}
