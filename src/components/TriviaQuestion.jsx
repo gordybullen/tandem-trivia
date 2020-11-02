@@ -59,6 +59,7 @@ const TriviaQuestion = ({
         setTime((prevTime) => prevTime - 1);
       }, 1000);
       
+      // clear the interval once time is up or an answer is submitted
       if (time < 0) {
         setMultiplier(1);
         clearInterval(interval);
