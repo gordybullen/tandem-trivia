@@ -22,7 +22,7 @@ If you would like to check out the code yourself and run the app locally, follow
 - The player has 15 seconds to select their answer and submit it. Alternatively, the player may choose to to turn the timer off for a more leisurely experience.
 - Once an answer has been submitted, the correct answer will be revealed to the player so that they may check their answer against it
 
-<img src="" alt="trivia gif" width="450"/>
+<img src="https://media.giphy.com/media/OewJCJDiXcVQ2ICKZR/giphy.gif" width="450"/>
 
 - Scoring: 
   - Running out of time and not submitting an answer will result in 0 points for that questions
@@ -43,8 +43,6 @@ If you would like to check out the code yourself and run the app locally, follow
 
  - A round of trivia is over when all 10 questions have been finished, whether by submitting an answer or time running out
   - The players' final score and correct answer count will then be displayed with an option to play again with a new set of questions
-  
-<img src="https://media.giphy.com/media/OewJCJDiXcVQ2ICKZR/giphy.gif" width="450"/>
 
 ## Next Steps
 - [ ] Add unit tests to provide documentation for other developers and prevent future regressions
