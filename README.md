@@ -7,10 +7,11 @@ Tandem Trivia is a fun and simple trivia app that I built using React. I challen
 ## Instructions
 Tandem Trivia is hosted using GitHub Pages, which allows you to play the game in your browser without downloading the project files, just click on the link above. 
 If you would like to check out the code yourself and run the app locally, follow these steps:
-1. Download the repo and unzip it
-2. Open your terminal and cd into the project folder
-3. Run ```npm install``` to install the dependencies
-4. Run ```npm start``` to spin up the app and enjoy!
+1. Ensure that you have Node.js and npm installed and updated. If you don't, click [here](https://www.npmjs.com/get-npm) for instructions.
+2. Download the repo and unzip it
+3. Open your terminal and cd into the project folder
+4. Run ```npm install``` to install the dependencies
+5. Run ```npm start``` to spin up the app and enjoy!
 
 ## Technologies
 - React
@@ -18,7 +19,7 @@ If you would like to check out the code yourself and run the app locally, follow
 - Javascript (ES6)
 
 ## Trivia Gameplay
-- Each round, 10 random trivia question will be pulled from the question bank provided for this code challenge, each with 3-4 potential answers to choose from
+- Each round, 10 random trivia question will be pulled from the question bank provided for this code challenge, each with 3-4 potential answers to choose from.
 - The player has 15 seconds to select their answer and submit it.
 
 ``` javascript
@@ -38,12 +39,12 @@ useEffect(() => {
 ```
 
 - Alternatively, the player may choose to to turn the timer off for a more leisurely experience.
-- Once an answer has been submitted, the correct answer will be revealed to the player so that they may check their answer against it
+- Once an answer has been submitted, the correct answer will be revealed to the player so that they may check their answer against it.
 
 <img src="https://media.giphy.com/media/OewJCJDiXcVQ2ICKZR/giphy.gif" width="450"/>
 
 - Scoring: 
-  - Running out of time and not submitting an answer will result in 0 points for that questions
+  - Running out of time and not submitting an answer will result in 0 points for that questions.
   - For answering correctly, scoring is based on the players' Multiplier and how quickly they answerd the question if the timer is on.
   
 ``` javascript
@@ -59,8 +60,8 @@ const checkAnswer = (answer, correctAnswer, timeRemaining) => {
 };
 ```
 
- - A round of trivia is over when all 10 questions have been finished, whether by submitting an answer or time running out
-  - The player's final score and correct answer count will then be displayed with an option to play again with a new set of questions
+ - A round of trivia is over when all 10 questions have been finished, whether by submitting an answer or the timer running out.
+  - The player's final score and correct answer count will then be displayed with an option to play again with a new set of questions.
 
 ## Next Steps
 - [ ] Add unit tests to provide documentation for other developers and prevent future regressions
