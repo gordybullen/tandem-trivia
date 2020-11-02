@@ -20,6 +20,7 @@ If you would like to check out the code yourself and run the app locally, follow
 ## Trivia Gameplay
 - Each round, 10 random trivia question will be pulled from the question bank provided for this code challenge, each with 3-4 potential answers to choose from
 - The player has 15 seconds to select their answer and submit it.
+
 ``` javascript
 useEffect(() => {
     if (timerOn) {
@@ -45,17 +46,18 @@ useEffect(() => {
   - Running out of time and not submitting an answer will result in 0 points for that questions
   - For answering correctly, scoring is based on the players' Multiplier and how quickly they answerd the question if the timer is on.
   
-  ``` javascript
- const checkAnswer = (answer, correctAnswer, timeRemaining) => {
-   if (answer === correctAnswer) {
-     setAnswered(answered + 1);
-     setMultiplier(multiplier + 1);
-     const points = 100 - (ANSWER_TIME - timeRemaining) * 5;
-     setScore(score + points * multiplier);
-   } else {
-     setMultiplier(1);
-   }
- };
+``` javascript
+const checkAnswer = (answer, correctAnswer, timeRemaining) => {
+    if (answer === correctAnswer) {
+      setAnswered(answered + 1);
+      setMultiplier(multiplier + 1);
+      const points = 100 - (ANSWER_TIME - timeRemaining) * 5;
+      setScore(score + points * multiplier);
+    } else {
+      setMultiplier(1);
+    }
+};
+```
 
  - A round of trivia is over when all 10 questions have been finished, whether by submitting an answer or time running out
   - The player's final score and correct answer count will then be displayed with an option to play again with a new set of questions
