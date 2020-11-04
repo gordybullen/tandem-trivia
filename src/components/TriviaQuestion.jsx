@@ -18,6 +18,7 @@ const TriviaQuestion = ({
   const [submitted, setSubmitted] = useState(false);
   const [options, setOptions] = useState([]);
   const [time, setTime] = useState(answerTime);
+  const [stateInterval, setStateInterval] = useState(null);
 
   // combine the array of incorrect answers and the correct answer to get all
   // the options and then shuffle after initial render so correct answer isn't
@@ -54,22 +55,24 @@ const TriviaQuestion = ({
 
   // if timerOn is true based on user input, start the timer
   useEffect(() => {
-    if (timerOn) {
-      const interval = setInterval(() => {
-        setTime((prevTime) => prevTime - 1);
-      }, 1000);
+    if (timerOn && time === answerTime) {
+      setStateInterval(
+        setInterval(() => {
+          setTime((prevTime) => prevTime - 1);
+        }, 1000)
+      );
+    }
 
+    if (timerOn && stateInterval) {
       // clear the interval once time is up or an answer is submitted
       if (time < 0) {
         setMultiplier(1);
-        clearInterval(interval);
+        clearInterval(stateInterval);
       } else if (submitted) {
-        clearInterval(interval);
+        clearInterval(stateInterval);
       }
-
-      return () => clearInterval(interval);
     }
-  }, [setMultiplier, time, setTime, timerOn, submitted]);
+  }, [time, submitted, timerOn, setTime, setMultiplier, answerTime]);
 
   const optionSelect = () => {
     return (
